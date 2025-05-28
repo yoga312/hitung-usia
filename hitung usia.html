@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Usia</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid black;
+        margin: 0 auto;
+        padding: 16px;
+        width :  500px;
+        }  
+
+        #birthday {
+            padding: 16px;
+            font-size: 20px;
+        }
+    
+        #check-button {
+            padding: 16px;
+            background: rgb(11, 185, 11);
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+        }
+        #check-button:hover {
+            background-color: rgb(153, 250, 183);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+     <h2> Cek Usia Anda</h2>
+     <label> Masukan Tahun Kelahiran Anda </label>
+     <input type="number" placeholder="contoh: 1945" id="birthday"/>
+     <button id="check-button"> Cek Usia </button>
+     <p> Hasil: </p>
+    </div>
+
+<script>
+    const birthdayInput = document.getElementById('birthday');
+    const checkButton = document.getElementById('check-button');
+    const resultParagraph = document.querySelector('p');
+
+    checkButton.addEventListener('click', () => {
+        const birthYear = parseInt(birthdayInput.value);
+        const currentYear = new Date().getFullYear();
+        
+        if (isNaN(birthYear) || birthYear < 1900 || birthYear > currentYear) {
+            resultParagraph.textContent = 'Tahun kelahiran tidak valid.';
+            return;
+        }
+
+        const age = currentYear - birthYear;
+        resultParagraph.textContent = `Usia Anda adalah ${age} tahun.`;
+    });
+</script>
+
+</body>
+</html>
